@@ -2,9 +2,8 @@ package com.spark.myprograms
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.DataFrame
-import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
-import com.databricks.spark.xml._
+
 
   object SparkXmlRead {
 
@@ -33,7 +32,7 @@ import com.databricks.spark.xml._
         StructField("publish_date", StringType, nullable = true),
         StructField("title", StringType, nullable = true)))
 
-      val readXMl = spark.read.format("com.databricks.spark.xml")
+      val readXMl = spark.read.format("xml")
         .option("rowTag", "book")
         .schema(customSchema)
         .load(inputPath)
